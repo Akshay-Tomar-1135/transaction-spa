@@ -20,18 +20,19 @@ app.get('/table/page/:page/:month', async (req, res) => {
     const page_no = req.params.page;
     const month = Number.parseInt(req.params.month);
     const query = req.query.search;
-    console.log(month, "query", query, !query);
     try {
-        const response = await fetch('https://s3.amazonaws.com/roxiler.com/product_transaction.json', {
-            method:'GET'
-        });
+        const response = await fetch('https://s3.amazonaws.com/roxiler.com/product_transaction.json');
         const data = await response.json();
         const result = data.filter(e => {
-            return ((!query ? true : (e['title'].indexOf(query) !== -1 || e['title'].indexOf(query) !== -1 || e['title'].indexOf(query) !== -1))
+            return ((!query ? true : (e.title.toLowerCase().includes(query.toLowerCase()) ||
+                                        e.description.toLowerCase().includes(query.toLowerCase()) ||
+                                        e.price.toString().toLowerCase().includes(query.toLowerCase()))))
                 &&
-                (month === -1 ? true : (new Date(e['dateOfSale']).getUTCMonth()===month)));
-        }).sort((a, b)=> a.id<b.id).slice((page_no-1)*10, page_no*10);
-        res.status(200).json({pages:Math.ceil(result.length/10),data:result});
+                (month === -1 ? true : (new Date(e['dateOfSale']).getUTCMonth()===month));
+        }).sort((a, b)=> a.id<b.id);
+        const pages = Math.ceil(result.length/10);
+        const paginated = result.slice((page_no-1)*10, page_no*10);
+        res.status(200).json({pages:pages,data:paginated});
     }
     catch (error) {
         console.error('Error fetching data:', error);

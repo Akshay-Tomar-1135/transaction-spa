@@ -6,7 +6,7 @@ const Table = (props) => {
 
   return (
     <div className="table-wrapper" >
-      <table  className='my-table' border="1">
+      <table  className='my-table'>
         <thead>
           <tr>
             <th>ID</th>

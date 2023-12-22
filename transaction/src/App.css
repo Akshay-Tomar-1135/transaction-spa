@@ -62,10 +62,11 @@ h2 {
   text-align: center;
 }
 
-.form-group input{
+.form-control{
   background-color: #f8df8c;
 }
 
 .borderless{
   border: none;
+  background-color: inherit;
 }
