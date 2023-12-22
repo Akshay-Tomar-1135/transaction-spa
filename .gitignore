@@ -1,0 +1,24 @@
+# server modules
+/server/node_modules
+
+# dependencies
+/transaction/node_modules
+/transaction/.pnp
+/transaction.pnp.js
+
+# testing
+/transaction/coverage
+
+# production
+/transaction/build
+
+# misc
+/transaction/.DS_Store
+/transaction/.env.local
+/transaction/.env.development.local
+/transaction/.env.test.local
+/transaction/.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

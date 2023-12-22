@@ -1,0 +1,71 @@
+.App {
+  min-height:100vh;
+  /* position: relative; */
+  /* text-align: center; */
+  justify-content: center;
+  /* align-items: center; */
+  /* display: flex; */
+  background-color: #edf6f6;
+  /* border: 5px solid black; */
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.circle {
+  /* position: absolute; */
+  padding: 10px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%; /* This creates the circular shape */
+  background-color: #ffffff; /* Change the color as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+h2 {
+  color: rgba(0, 0, 0, 0.563); /* Set the text color */
+  text-align: center;
+}
+
+.form-group input{
+  background-color: #f8df8c;
+}
+
+.borderless{
+  border: none;
+}
