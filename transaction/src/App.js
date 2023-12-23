@@ -1,16 +1,19 @@
 import './App.css';
 import Table from './component/table';
+import Statistics from './component/satistics';
+import BarChart from './component/chart';
 import { useEffect, useState } from 'react';
-import { getTable } from './component/utility';
+import { getTable, months } from './component/utility';
 
 function App() {
   // const [data, setData] = useState([]);
   const [selectedMonth, setSelectedMonth] = useState('');
-  const months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  
   const [totalPage, setTotalPage] = useState(0);
   const [currPage, setCurrPage] = useState(1);
   const [tableData, setTableData] = useState([]);
   const [search, setSearch] = useState('');
+  
   // const updateData = async () => {
   //   await fetch('http://localhost:5000/data')
   //     .then(res => res.json())
@@ -91,6 +94,17 @@ function App() {
         </span>
         <span>Next Page: {Math.min(totalPage, currPage + 1)}</span>
       </div>
+      <div className='d-flex justify-content-center mt-lg-5 mb-lg-5 pt-lg-5 pb-xxl-5 px-lg-5'>
+        <div className='d-flex w-75'>
+          <Statistics />
+        </div>
+      </div>
+      {/* <div className='d-flex justify-content-center'> */}
+        <div className='d-flex justify-content-center mt-lg-5 pt-lg-5' >
+      <BarChart />
+
+        </div>
+      {/* </div> */}
     </div>
 
   );

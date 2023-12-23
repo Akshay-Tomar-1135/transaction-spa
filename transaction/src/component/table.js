@@ -1,4 +1,3 @@
-import React from 'react';
 import './styles/table.css';
 
 const Table = (props) => {

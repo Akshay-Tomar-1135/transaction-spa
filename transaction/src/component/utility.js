@@ -10,3 +10,5 @@ export const getTable = async(data=[], page_no=1, month=-1, query='')=>{
     const paginated = result.slice((page_no-1)*10, page_no*10);
     return {pages:pages, data:paginated};
 }
+
+export const months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
