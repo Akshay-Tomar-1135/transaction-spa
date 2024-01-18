@@ -97,6 +97,28 @@ app.get('/chart/bar/:month', async (req, res) => {
     }
 });
 
+// api for pie chart information
+app.get('/chart/pie/:month', async (req, res) => {
+    const month = Number.parseInt(req.params.month);
+    try {
+        const response = await fetch('https://s3.amazonaws.com/roxiler.com/product_transaction.json');
+        const data = await response.json();
+        const result = data.filter(e => {
+            return (month === -1 ? true : (new Date(e['dateOfSale']).getUTCMonth()===month));
+        });
+        const chartData = result.reduce((a, e)=>{
+            if(!a.hasOwnProperty(e.category)) a[e.category] = 1;
+            else a[e.category]++;
+            return a;
+        }, {});
+        res.status(200).json({labels:Object.keys(chartData), values:Object.values(chartData)});
+    }
+    catch (error) {
+        console.error('Error fetching data:', error);
+        res.status(500).json({ error: 'Unable to fetch data' });
+    }
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

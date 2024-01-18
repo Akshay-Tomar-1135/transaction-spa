@@ -2,14 +2,17 @@ import { useEffect, useState } from "react";
 import { months } from "./utility";
 import './styles/statistics.css';
 
+// component to render statistics
 const Statistics = (props) => {
-
+    const {setLoading} = props;
     const [selectedMonth, setSelectedMonth] = useState('');
     const [totalSale, setTotalSale] = useState(0);
     const [sold, setSold] = useState(0);
     const [notSold, setNotSold] = useState(0);
 
+    // to call when new month is selected
     const onChange = async ()=>{
+        setLoading(true);
         try{
             const result = await fetch(`http://localhost:5000/statistics/${months.findIndex(e=> e===selectedMonth)}`);
             const res = await result.json();
@@ -20,6 +23,7 @@ const Statistics = (props) => {
         catch(e){
             console.log(e);
         }
+        setLoading(false);
     }
 
     useEffect(()=>{

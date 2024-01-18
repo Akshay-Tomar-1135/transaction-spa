@@ -1,3 +1,4 @@
+// to implement pagination on client side
 export const getTable = async(data=[], page_no=1, month=-1, query='')=>{
     const result = data.filter(e => {
         return ((!query ? true : (e.title.toLowerCase().includes(query.toLowerCase()) ||
@@ -11,4 +12,5 @@ export const getTable = async(data=[], page_no=1, month=-1, query='')=>{
     return {pages:pages, data:paginated};
 }
 
+// static data -- months name
 export const months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];

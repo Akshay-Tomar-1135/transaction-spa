@@ -2,13 +2,17 @@ import React, { useEffect, useState, useRef } from 'react';
 import Chart from 'chart.js/auto';
 import { months } from './utility';
 
-const BarChart = () => {
+// component to render bar chart
+const BarChart = (props) => {
+    const { setLoading } = props;
     const chartRef = useRef(null);
     const [selectedMonth, setSelectedMonth] = useState('');
     const [labels, setLabels] = useState([]);
     const [values, setValues] = useState([]);
 
+    // to call when new month is selected
     const onChange = async () => {
+        setLoading(true);
         try {
             const result = await fetch(`http://localhost:5000/chart/bar/${months.findIndex(e => e === selectedMonth)}`);
             const res = await result.json();
@@ -18,10 +22,12 @@ const BarChart = () => {
         catch (e) {
             console.log(e);
         }
+        setLoading(false);
     }
-    useEffect(() => {onChange();}, []);
+    
     useEffect(() => {onChange();}, [selectedMonth]);
 
+    // to create bar chart whenever new data comes after selecting new month
     useEffect(() => {
             const ctx = chartRef.current.getContext('2d');
             const myChart = new Chart(ctx, {
@@ -59,7 +65,7 @@ const BarChart = () => {
 
     return (
         <div>
-            <h3>Statistics - <select className='borderless' value={selectedMonth} onChange={(e) => {
+            <h3>Bar Chart Stat - <select className='borderless' value={selectedMonth} onChange={(e) => {
                 setSelectedMonth(e.target.value);
             }
             } >

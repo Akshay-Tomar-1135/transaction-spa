@@ -1,7 +1,8 @@
 import './styles/table.css';
 
+// component to render table
 const Table = (props) => {
-  const data = props.data;
+  const data = props.data;  // paginated data
 
   return (
     <div className="table-wrapper" >
@@ -18,7 +19,7 @@ const Table = (props) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((item) => (
+          {data?.map((item) => (
             <tr key={item.id}>
               <td>{item.id}</td>
               <td>{item.title}</td>

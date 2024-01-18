@@ -6,9 +6,11 @@ It is a single page application which reads products data from a third party URL
 
 - **Table analysis:** Fetched JSON content from 3rd party URL converted into tabular format which is facilitated with **pagination**.
 
-- **Statistics:** Provides information about Total Sales, Number of Sold items and Number of unsold items
+- **Statistics:** Provides information about Total Sales, Number of Sold items and Number of unsold items, filtered by selected month.
 
-- **Bar Chart:**  Provides a chart analysis about product counts in different price ranges.
+- **Bar Chart:**  Provides a chart analysis about product counts in different price ranges, filtered by selected month.
+
+- **Pie Chart:** Provides a Pie chart analysis about product counts grouped by categories, filtered by selected month.
 ## Tech Stack
 
 - **Express.js:** Express.js is used as the backend server framework to handle API requests and routing, which works as an interface and filter between 3rd party's content and frontend.
@@ -55,6 +57,10 @@ It is a single page application which reads products data from a third party URL
 
 ### Bar Chart
 ![image](https://github.com/Akshay-Tomar-1135/transaction-spa/assets/75598614/707b69f9-f21b-4f61-a022-bb1560e6df6d)
+
+### Pie Chart
+![image](https://github.com/Akshay-Tomar-1135/transaction-spa/assets/75598614/7977347d-1acd-4ee5-a407-5ad3ca88758a)
+
 ## License
 
 This project is licensed under the [MIT](https://choosealicense.com/licenses/mit/) License.
